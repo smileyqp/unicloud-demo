@@ -2,12 +2,12 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area">
-			<text class="title">{{title}}</text>
+			<text class="title">长按测试删除，点击测试更新</text>
 		</view>
 		<unicloud-db ref="udb" v-slot:default="{data, loading, error, options}" collection="contacts" >
 			<view v-if="error">{{error.message}}</view>
-			<view v-else>
-				{{data}}
+			<view class="list-con" v-else>
+				<!-- {{data}} -->
 				<uni-list>
 					<uni-list-item @click.native="update(item._id)" @longpress.native="rmItem(item._id)" v-for="item in data" :key="item._id" :title="item.name" :note="item.tel" link></uni-list-item>
 				</uni-list>
@@ -74,6 +74,9 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+	}
+	.list-con{
+		width: 750rpx;
 	}
 
 	.logo {
